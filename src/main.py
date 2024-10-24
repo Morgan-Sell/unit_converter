@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap5
+
 from forms import LengthForm
 
 app = Flask(__name__, template_folder="../templates")
@@ -11,7 +12,6 @@ bootstrap = Bootstrap5(app)
 def home():
     form = LengthForm()
     return render_template("index.html", form=form)
-
 
 
 if __name__ == "__main__":

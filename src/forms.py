@@ -2,11 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import DecimalField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 
-from config import (
-    LENGTH_UNIT_CHOICES,
-    TEMPERATURE_UNIT_CHOICES,
-    WEIGHT_UNIT_CHOICES,
-)
+from config import LENGTH_UNIT_CHOICES, TEMPERATURE_UNIT_CHOICES, WEIGHT_UNIT_CHOICES
 
 
 class LengthForm(FlaskForm):

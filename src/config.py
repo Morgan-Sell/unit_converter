@@ -1,3 +1,5 @@
+# Contains global variables
+
 LENGTH_UNIT_CHOICES = [
     ("mm", "Millimeter"),
     ("cm", "Centimeter"),
@@ -8,7 +10,6 @@ LENGTH_UNIT_CHOICES = [
     ("yd", "Yard"),
     ("mi", "Mile"),
 ]
-
 
 LENGTH_CONVERSION_FACTORS = {
     # Millimeter to others
@@ -39,7 +40,7 @@ LENGTH_CONVERSION_FACTORS = {
     ('m', 'mi'): 0.000621371,
 
     # Kilometer to others
-    ('km', 'mm'): 1e6,
+    ('km', 'mm'): 0.000001,
     ('km', 'cm'): 100000,
     ('km', 'm'): 1000,
     ('km', 'in'): 39370.1,
@@ -91,5 +92,38 @@ WEIGHT_UNIT_CHOICES = [
     ("oz", "Ounce"),
     ("lb", "Pound"),
 ]
+
+WEIGHT_CONVERSION_FACTORS = {
+    # Milligram to others
+    ('mg', 'g'): 0.001,
+    ('mg', 'kg'): 0.000001,
+    ('mg', 'oz'): 0.000035274,
+    ('mg', 'lb'): 0.0000022046,
+
+    # Gram to others
+    ('g', 'mg'): 1000,
+    ('g', 'kg'): 0.001,
+    ('g', 'oz'): 0.035274,
+    ('g', 'lb'): 0.00220462,
+
+    # Kilogram to others
+    ('kg', 'mg'): 0.000001,
+    ('kg', 'g'): 1000,
+    ('kg', 'oz'): 35.274,
+    ('kg', 'lb'): 2.20462,
+
+    # Ounce to others
+    ('oz', 'mg'): 28349.5,
+    ('oz', 'g'): 28.3495,
+    ('oz', 'kg'): 0.0283495,
+    ('oz', 'lb'): 0.0625,
+
+    # Pound to others
+    ('lb', 'mg'): 453592,
+    ('lb', 'g'): 453.592,
+    ('lb', 'kg'): 0.453592,
+    ('lb', 'oz'): 16,
+}
+
 
 TEMPERATURE_UNIT_CHOICES = [("C", "Celsius"), ("F", "Fahrenheit"), ("K", "Kelvin")]
