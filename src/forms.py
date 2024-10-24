@@ -1,7 +1,8 @@
-from src.config import LENGTH_UNIT_CHOICES
 from flask_wtf import FlaskForm
-from wtforms import DecimalField, SubmitField, SelectField
+from wtforms import DecimalField, SelectField, SubmitField
 from wtforms.validators import DataRequired
+
+from src.config import LENGTH_UNIT_CHOICES
 
 
 class LengthForm(FlaskForm):
@@ -12,8 +13,6 @@ class LengthForm(FlaskForm):
         validators=[DataRequired()],
     )
     to_unit = SelectField(
-        "Unit to convert to:",
-        choices=LENGTH_UNIT_CHOICES,
-        validators=[DataRequired()]
+        "Unit to convert to:", choices=LENGTH_UNIT_CHOICES, validators=[DataRequired()]
     )
     convert = SubmitField(label="Convert")
