@@ -1,5 +1,6 @@
-from src.conversion_strategy import LengthConversionStrategy, WeightConversionStrategy
 import pytest
+
+from src.conversion_strategy import LengthConversionStrategy, WeightConversionStrategy
 
 
 @pytest.mark.parametrize(
@@ -10,8 +11,8 @@ import pytest
         (100, "km", "ft", 328084),
         (99999, "mm", "yd", 109.36),
         (654321, "yd", "km", 598.31),
-        (1218, "ft", "ft", 1218)
-    ]
+        (1218, "ft", "ft", 1218),
+    ],
 )
 def test_length_convert_success(value, from_unit, to_unit, conversion):
     strategy = LengthConversionStrategy()
@@ -21,10 +22,7 @@ def test_length_convert_success(value, from_unit, to_unit, conversion):
 
 @pytest.mark.parametrize(
     argnames="value, from_unit, to_unit",
-    argvalues=[
-        (42, "cabbage", "ft"),
-        (222, "mm", "burger")
-    ]
+    argvalues=[(42, "cabbage", "ft"), (222, "mm", "burger")],
 )
 def test_length_convert_raises_error(value, from_unit, to_unit):
     strategy = LengthConversionStrategy()
@@ -38,7 +36,7 @@ def test_length_convert_raises_error(value, from_unit, to_unit):
         (33, "kg", "lb", 72.75),
         (3456, "oz", "kg", 97.98),
         (3.2, "g", "mg", 3200),
-    ]
+    ],
 )
 def test_weight_convert_success(value, from_unit, to_unit, conversion):
     strategy = WeightConversionStrategy()
@@ -48,10 +46,7 @@ def test_weight_convert_success(value, from_unit, to_unit, conversion):
 
 @pytest.mark.parametrize(
     argnames="value, from_unit, to_unit",
-    argvalues=[
-        (42, "snow", "lb"),
-        (222, "kg", "sand")
-    ]
+    argvalues=[(42, "snow", "lb"), (222, "kg", "sand")],
 )
 def test_weight_convert_raises_error(value, from_unit, to_unit):
     strategy = WeightConversionStrategy()
