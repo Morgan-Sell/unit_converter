@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import DecimalField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 
-from src.config import (
+from config import (
     LENGTH_UNIT_CHOICES,
     TEMPERATURE_UNIT_CHOICES,
     WEIGHT_UNIT_CHOICES,
@@ -10,7 +10,7 @@ from src.config import (
 
 
 class LengthForm(FlaskForm):
-    length = DecimalField("Enter length to convert:", validators=[DataRequired()])
+    value = DecimalField("Enter length to convert:", validators=[DataRequired()])
     from_unit = SelectField(
         "Unit to convert from:",
         choices=LENGTH_UNIT_CHOICES,
@@ -23,7 +23,7 @@ class LengthForm(FlaskForm):
 
 
 class WeightForm(FlaskForm):
-    length = DecimalField("Enter weight to convert:", validators=[DataRequired()])
+    value = DecimalField("Enter weight to convert:", validators=[DataRequired()])
     from_unit = SelectField(
         "Unit to convert from:",
         choices=WEIGHT_UNIT_CHOICES,
@@ -36,7 +36,7 @@ class WeightForm(FlaskForm):
 
 
 class TemperatureForm(FlaskForm):
-    length = DecimalField("Enter temperature to convert:", validators=[DataRequired()])
+    value = DecimalField("Enter temperature to convert:", validators=[DataRequired()])
     from_unit = SelectField(
         "Unit to convert from:",
         choices=TEMPERATURE_UNIT_CHOICES,

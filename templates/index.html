@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Unit Converter{% endblock %}
+{% block content %}
+<!--Using Boostrap classes for styling here-->
+<div class="jumbotron">
+	<div class="container">
+        <h1>Unit Converter</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.value.label }}
+                {{ form.value(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.from_unit.label }}
+                {{ form.from_unit(class="form-control")}}
+            </div>
+            <div class="form-group">
+                {{ form.to_unit.label }}
+                {{ form.to_unit(class="form-control")}}
+            </div>
+
+        </form>   
+    </div>
+</div>
+{% endblock %}

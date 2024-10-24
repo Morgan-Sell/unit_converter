@@ -1,0 +1,18 @@
+from src.conversion_strategy import LengthConversionStrategy
+import pytest
+
+
+@pytest.mark.parametrize(
+    argnames="value, from_unit, to_unit, conversion",
+    argvalues=[
+        (5400, "cm", "in", 2125.99),
+        (36, "mi", "yd", 6336),
+        (100, "km", "ft", 328084),
+        (99999, "mm", "yd", 109.36),
+        (654321, "yd", "km", 598.31)
+    ]
+)
+def test_length_convert(value, from_unit, to_unit, conversion):
+    strategy = LengthConversionStrategy()
+    result = strategy.conver(value, from_unit, to_unit)
+    assert round(result, 2) == conversion
