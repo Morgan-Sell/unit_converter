@@ -55,6 +55,16 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <!-- Display any flash messages (conversion results) -->
+                                        {% with messages = get_flashed_messages(with_categories=true) %}
+                                        {% if messages %}
+                                            <div class="mt-4">
+                                                {% for category, message in messages %}
+                                                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endwith %}
                                     </div>
                                 </div>
                             </div> <!-- End row -->
