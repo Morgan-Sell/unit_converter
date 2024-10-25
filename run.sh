@@ -9,11 +9,41 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # Set Python Path
 export PYTHONPATH=$THIS_DIR
 
+# Function to open the default web browser with a specified URL
+function open-browser {
+    local url=$1
+    echo "Opening browser at $url..."
+
+    # Check the operating system and open the browser with the appropriate command
+    if which xdg-open > /dev/null; then
+        xdg-open "$url"  # For Linux
+    elif which open > /dev/null; then
+        open "$url"      # For macOS
+    elif which start > /dev/null; then
+        start "$url"     # For Windows (Git Bash or Cygwin)
+    else
+        echo "Please manually open a browser and navigate to $url"
+    fi
+}
+
 # Run application once configuration is setup
 function run-app {
     # echo "Running application with PYTHONPATH=$PYTHONPATH"
     python src/main.py
+    # APP_PID=$!
+
+    # Check if the application is running on port 5001 and open the browser when ready
+#     while ! nc -z localhost 5001; do
+#         sleep 1
+#     done
+
+#     # Call the open-browser function with the app's URL
+#     open-browser "http://127.0.0.1:5001"
+
+#     wait $APP_PID
 }
+
+
 
 # Load environment variables from .env file
 function load-env {
@@ -81,6 +111,9 @@ if [ $# -eq 0 ]; then
 fi
 
 case "$1" in
+    open-browser)
+        open-browser
+        ;;
     run-app)
         run-app
         ;;

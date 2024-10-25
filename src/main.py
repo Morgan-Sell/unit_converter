@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap5
 
 from forms import LengthForm
 from src.conversion_strategy import LengthConversionStrategy, UnitConverter
+from src.operations import calc_conversion_based_on_form_inputs
 
 app = Flask(__name__, static_folder="../static", template_folder="../templates")
 # required for Flask session handling
@@ -16,19 +17,24 @@ def home():
     result = None
 
     if form.validate_on_submit():
+        strategy = LengthConversionStrategy()
+        result = calc_conversion_based_on_form_inputs(form, strategy)
+
+    return render_template("index.html", form=form, result=result)
+
+
+@app.route("/length", methods=["GET", "POST"])
+def length():
+    form = LengthForm()
+    result = None
+
+    if form.validate_on_submi():
         value = form.value.data
         from_unit = form.from_unit.data
         to_unit = form.to_unit.data
 
         strategy = LengthConversionStrategy()
         converter = UnitConverter(strategy=strategy)
-
-        try:
-            result = converter.convert(value, from_unit, to_unit)
-        except ValueError as e:
-            flash(str(e), "danger")
-
-    return render_template("index.html", form=form, result=result)
 
 
 if __name__ == "__main__":
