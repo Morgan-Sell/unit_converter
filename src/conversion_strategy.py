@@ -16,7 +16,7 @@ class LengthConversionStrategy(ConversionStrategy):
             return value
         # perform conversions
         if (from_unit, to_unit) in LENGTH_CONVERSION_FACTORS:
-            return value * LENGTH_CONVERSION_FACTORS[(from_unit, to_unit)]
+            return float(value) * LENGTH_CONVERSION_FACTORS[(from_unit, to_unit)]
         else:
             raise ValueError(f"No conversion available {from_unit} to {to_unit}.")
 
@@ -28,7 +28,7 @@ class WeightConversionStrategy(ConversionStrategy):
             return value
         # perform conversions
         if (from_unit, to_unit) in WEIGHT_CONVERSION_FACTORS:
-            return value * WEIGHT_CONVERSION_FACTORS[(from_unit, to_unit)]
+            return float(value) * WEIGHT_CONVERSION_FACTORS[(from_unit, to_unit)]
         else:
             raise ValueError(f"No conversion available {from_unit} to {to_unit}.")
 

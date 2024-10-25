@@ -69,7 +69,7 @@ LENGTH_CONVERSION_FACTORS = {
     ("yd", "ft"): 3,
     ("yd", "mi"): 0.000568182,
     # Mile to others
-    ("mi", "mm"): 1.609e6,
+    ("mi", "mm"): 0.000001609,
     ("mi", "cm"): 160934,
     ("mi", "m"): 1609.34,
     ("mi", "km"): 1.60934,
