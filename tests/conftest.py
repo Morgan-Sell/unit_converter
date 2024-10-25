@@ -9,4 +9,5 @@ app.secret_key = "SECRET_KEY"
 def app_context():
     """Provides a Flask app context for tests that use flash messages."""
     with app.app_context():
-        yield
+        with app.test_request_context("/"):
+            yield
