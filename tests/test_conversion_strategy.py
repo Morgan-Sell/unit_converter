@@ -1,8 +1,9 @@
 import pytest
 
-from src.conversion_strategy import LengthConversionStrategy, WeightConversionStrategy
+from src.conversion_strategy import LengthConversionStrategy, TemperatureConversionStrategy, WeightConversionStrategy
 
 
+# -- LengthConversionStrategy --
 @pytest.mark.parametrize(
     argnames="value, from_unit, to_unit, conversion",
     argvalues=[
@@ -30,6 +31,7 @@ def test_length_convert_raises_error(value, from_unit, to_unit):
         strategy.convert(value, from_unit, to_unit)
 
 
+# -- WeightConversionStrategy --
 @pytest.mark.parametrize(
     argnames="value, from_unit, to_unit, conversion",
     argvalues=[
@@ -50,5 +52,30 @@ def test_weight_convert_success(value, from_unit, to_unit, conversion):
 )
 def test_weight_convert_raises_error(value, from_unit, to_unit):
     strategy = WeightConversionStrategy()
+    with pytest.raises(ValueError):
+        strategy.convert(value, from_unit, to_unit)
+
+
+# -- TemperatureConversionStrategy --
+@pytest.mark.parametrize(
+    argnames="value, from_unit, to_unit, conversion",
+    argvalues=[
+        (84, "F", "F", 84),
+        (100, "F", "C", 37.78),
+        (333, "K", "F", 139.73),
+    ]
+)
+def test_temperature_convert_success(value, from_unit, to_unit, conversion):
+    strategy = TemperatureConversionStrategy()
+    result = strategy.convert(value, from_unit, to_unit)
+    assert round(result, 2) == conversion
+
+
+@pytest.mark.parametrize(
+    argnames="value, from_unit, to_unit",
+    argvalues=[(42, "yin", "F"), (222, "K", "yang")],
+)
+def test_weight_convert_raises_error(value, from_unit, to_unit):
+    strategy = TemperatureConversionStrategy()
     with pytest.raises(ValueError):
         strategy.convert(value, from_unit, to_unit)

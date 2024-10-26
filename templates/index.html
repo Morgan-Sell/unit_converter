@@ -12,17 +12,17 @@
                             <strong>Select Measurement</strong>
                         </div>
                         <div class="list-group list-group-flush">
-                            <a href="#" id="tab1" class="tabs list-group-item bg-light">
+                            <a href="{{ url_for('length_conversion') }}" id="tab1" class="tabs list-group-item bg-light {% if active_tab == 'length' %}active{% endif %}">
                                 <div class="list-div my-2">
                                     <div class="fa fa-ruler"></div>&nbsp;&nbsp; Length
                                 </div>
                             </a>
-                            <a href="#" id="tab2" class="tabs list-group-item bg-light">
+                            <a href="{{ url_for('weight_conversion') }}" id="tab2" class="tabs list-group-item bg-light {% if active_tab == 'weight' %}active{% endif %}">
                                 <div class="list-div my-2">
                                     <div class="fa fa-weight"></div>&nbsp;&nbsp; Weight
                                 </div>
                             </a>
-                            <a href="#" id="tab3" class="tabs list-group-item bg-light">
+                            <a href="{{ url_for('temperature_conversion') }}" id="tab3" class="tabs list-group-item bg-light {% if active_tab == 'temperature' %}active{% endif %}">
                                 <div class="list-div my-2">
                                     <div class="fa fa-thermometer-half"></div>&nbsp;&nbsp;&nbsp; Temperature
                                 </div>
@@ -66,7 +66,7 @@
                                                 <p class="result-title">Result of your calculation</p>
                                                 <p class="result-output">
                                                     {{ "{:,.2f}".format(form.value.data) }} {{ form.from_unit.data }} = 
-                                                    {{ "{:,.2f}".format(result) }} {{ form.to_unit.data }}
+                                                {{ "{:,.2f}".format(result) }} {{ form.to_unit.data }}
                                                 </p>
                                                 <form method="GET">
                                                     <button class="btn btn-secondary btn-block">Reset</button>

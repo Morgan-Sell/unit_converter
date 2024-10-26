@@ -116,3 +116,21 @@ WEIGHT_CONVERSION_FACTORS = {
 
 
 TEMPERATURE_UNIT_CHOICES = [("C", "Celsius"), ("F", "Fahrenheit"), ("K", "Kelvin")]
+
+TEMPERATURE_CONVERSION_MATRIX = {
+    "C": {
+        "C": lambda x: x,  # Celsius to Celsius
+        "F": lambda x: x * 9 / 5 + 32,  # Celsius to Fahrenheit
+        "K": lambda x: x + 273.15,  # Celsius to Kelvin
+    },
+    "F": {
+        "C": lambda x: (x - 32) * 5 / 9,  # Fahrenheit to Celsius
+        "F": lambda x: x,  # Fahrenheit to Fahrenheit
+        "K": lambda x: (x - 32) * 5 / 9 + 273.15,  # Fahrenheit to Kelvin
+    },
+    "K": {
+        "C": lambda x: x - 273.15,  # Kelvin to Celsius
+        "F": lambda x: (x - 273.15) * 9 / 5 + 32,  # Kelvin to Fahrenheit
+        "K": lambda x: x,  # Kelvin to Kelvin
+    },
+}

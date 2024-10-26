@@ -44,5 +44,5 @@ def test_calc_conversion_form_raises_error(app_context, mocker):
     # Assert
     assert result is None
     assert get_flashed_messages(with_categories=True) == [
-        ("danger", "No conversion available from oz to invalid_unit.")
+        ("danger", "Unsupported conversion from oz to invalid_unit.")
     ]

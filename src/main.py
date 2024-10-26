@@ -1,8 +1,13 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap5
 
-from forms import LengthForm
-from src.conversion_strategy import LengthConversionStrategy, UnitConverter
+from forms import LengthForm, TemperatureForm, WeightForm
+from src.conversion_strategy import (
+    LengthConversionStrategy,
+    TemperatureConversionStrategy,
+    UnitConverter,
+    WeightConversionStrategy,
+)
 from src.operations import calc_conversion_based_on_form_inputs
 
 app = Flask(__name__, static_folder="../static", template_folder="../templates")
@@ -24,17 +29,39 @@ def home():
 
 
 @app.route("/length", methods=["GET", "POST"])
-def length():
+def length_conversion():
     form = LengthForm()
     result = None
 
-    if form.validate_on_submi():
-        value = form.value.data
-        from_unit = form.from_unit.data
-        to_unit = form.to_unit.data
-
+    if form.validate_on_submit():
         strategy = LengthConversionStrategy()
-        converter = UnitConverter(strategy=strategy)
+        result = calc_conversion_based_on_form_inputs(form, strategy)
+
+    return render_template("index.html", form=form, result=result)
+
+
+@app.route("/weight", methods=["GET", "POST"])
+def weight_conversion():
+    form = WeightForm()
+    result = None
+
+    if form.validate_on_submit():
+        strategy = WeightConversionStrategy()
+        result = calc_conversion_based_on_form_inputs(form, strategy)
+
+    return render_template("index.html", form=form, result=result)
+
+
+@app.route("/temperature", methods=["GET", "POST"])
+def temperature_conversion():
+    form = TemperatureForm()
+    result = None
+
+    if form.validate_on_submit():
+        strategy = TemperatureConversionStrategy()
+        result = calc_conversion_based_on_form_inputs(form, strategy)
+
+    return render_template("index.html", form=form, result=result)
 
 
 if __name__ == "__main__":
