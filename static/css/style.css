@@ -113,3 +113,11 @@ h3.text-center {
     color: #2C3E50; /* Darker color */
     text-shadow: 2px 2px 4px #aaa; /* Adding subtle shadow */
 }
+
+h1.text-center {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Custom font */
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #2C3E50; /* Darker color */
+    text-shadow: 2px 2px 4px #aaa; /* Adding subtle shadow */
+}

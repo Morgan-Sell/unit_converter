@@ -18,14 +18,8 @@ bootstrap = Bootstrap5(app)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    form = LengthForm()
-    result = None
 
-    if form.validate_on_submit():
-        strategy = LengthConversionStrategy()
-        result = calc_conversion_based_on_form_inputs(form, strategy)
-
-    return render_template("index.html", form=form, result=result)
+    return render_template("home.html")
 
 
 @app.route("/length", methods=["GET", "POST"])

@@ -32,7 +32,7 @@ class WeightForm(FlaskForm):
 
 
 class TemperatureForm(FlaskForm):
-    length = DecimalField("Enter temperature to convert:", validators=[DataRequired()])
+    value = DecimalField("Enter temperature to convert:", validators=[DataRequired()])
     from_unit = SelectField(
         "Unit to convert from:",
         choices=TEMPERATURE_UNIT_CHOICES,
