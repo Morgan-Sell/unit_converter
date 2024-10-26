@@ -44,7 +44,7 @@ class TemperatureConversionStrategy(ConversionStrategy):
             or to_unit not in TEMPERATURE_CONVERSION_MATRIX
         ):
             raise ValueError(f"Unsupported conversion from {from_unit} to {to_unit}.")
-        
+
         return TEMPERATURE_CONVERSION_MATRIX[from_unit][to_unit](value)
 
 

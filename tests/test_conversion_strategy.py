@@ -1,6 +1,10 @@
 import pytest
 
-from src.conversion_strategy import LengthConversionStrategy, TemperatureConversionStrategy, WeightConversionStrategy
+from src.conversion_strategy import (
+    LengthConversionStrategy,
+    TemperatureConversionStrategy,
+    WeightConversionStrategy,
+)
 
 
 # -- LengthConversionStrategy --
@@ -63,7 +67,7 @@ def test_weight_convert_raises_error(value, from_unit, to_unit):
         (84, "F", "F", 84),
         (100, "F", "C", 37.78),
         (333, "K", "F", 139.73),
-    ]
+    ],
 )
 def test_temperature_convert_success(value, from_unit, to_unit, conversion):
     strategy = TemperatureConversionStrategy()

@@ -11,8 +11,8 @@ from src.conversion_strategy import (
 from src.operations import calc_conversion_based_on_form_inputs
 
 app = Flask(__name__, static_folder="../static", template_folder="../templates")
-# required for Flask session handling
-app.secret_key = "MY_SECRET_KEY"  # TODO: Update key
+# generates a CSRF token that's required for Flask session handling
+app.secret_key = "MY_SECRET_KEY"
 bootstrap = Bootstrap5(app)
 
 
