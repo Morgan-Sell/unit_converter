@@ -79,7 +79,7 @@ def test_temperature_convert_success(value, from_unit, to_unit, conversion):
     argnames="value, from_unit, to_unit",
     argvalues=[(42, "yin", "F"), (222, "K", "yang")],
 )
-def test_weight_convert_raises_error(value, from_unit, to_unit):
+def test_temperature_convert_raises_error(value, from_unit, to_unit):
     strategy = TemperatureConversionStrategy()
     with pytest.raises(ValueError):
         strategy.convert(value, from_unit, to_unit)

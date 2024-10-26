@@ -26,9 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
      
-    # - name: Run ruff
-    #   run: |
-    #     ruff check src/ tests/ --config pyproject.toml
+    - name: Run ruff
+      run: |
+        ruff check src/ tests/ --config pyproject.toml
     
     - name: Run pytest with coverage
       run: pytest --cov-report=html # outputs coverage report to htmlcov

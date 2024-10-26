@@ -1,11 +1,10 @@
-from flask import Flask, flash, redirect, render_template, request, url_for
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap5
 
 from forms import LengthForm, TemperatureForm, WeightForm
 from src.conversion_strategy import (
     LengthConversionStrategy,
     TemperatureConversionStrategy,
-    UnitConverter,
     WeightConversionStrategy,
 )
 from src.operations import calc_conversion_based_on_form_inputs

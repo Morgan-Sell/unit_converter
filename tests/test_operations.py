@@ -1,7 +1,6 @@
 from unittest.mock import Mock
 
-import pytest
-from flask import Flask, flash, get_flashed_messages
+from flask import get_flashed_messages
 
 from src.conversion_strategy import WeightConversionStrategy
 from src.operations import calc_conversion_based_on_form_inputs
