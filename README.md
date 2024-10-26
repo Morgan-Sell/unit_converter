@@ -47,8 +47,7 @@ Get started with the **Unit Converter** in a few quick steps:
     ./run.sh run-app
     ```
 
-4. Open your browser and entered the url http://127.0.0.1:5001.
-
+4. Open your browser and enter http://127.0.0.1:5001 into the address bar.
 
 
 ## Application Walkthrough
@@ -79,7 +78,7 @@ After submitting your conversion, the result is displayed prominently, allowing 
 </p>
 
 ### 5. Return to Calculator
-Select reset to return to the calculator. You can use the vertical navbar to select a different unit of measure to convert.
+Select **Reset** to return to the calculator. You can use the vertical navbar to select a different unit of measure to convert.
 
 <p align="center">
   <img src="./img/reset.png" alt="Reset"/>
@@ -110,12 +109,12 @@ The project structure is as follows:
 ├── README.md                       # Project documentation and usage instructions
 ├── requirements.txt                # Lists Python dependencies required for the project
 └── run.sh                          # Shell script for managing setup, environment, and application tasks
-
+```
 
 ## Dependencies
 
 - Python 3.11
-- Libraries listed in requirements.txt (automatically installed with setup)
+- Libraries listed in `requirements.txt` (automatically installed with setup)
   
 
 ## License
